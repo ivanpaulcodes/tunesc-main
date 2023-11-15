@@ -37,7 +37,7 @@ body {
   background: var(--primary);
 }
 .sidebar:hover {
-  width: 240px;
+  width: 260px;
   transition: 0.5s;
 }
 .logo {
@@ -76,7 +76,7 @@ body {
 }
 .logout {
   position: absolute;
-  bottom: 0;
+  bottom: 10;
   left: 0;
   width: 100%;
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- confirm css -->
     <link rel="stylesheet" href="confirm.css" />
-    <link rel="stylesheet" href="/tunesc-vs//styles/userprofile.css" />
+    <link rel="stylesheet" href="/tunesc-vs/styles/userprofile.css" />
     <title>User</title>
   </head>
   <body>
@@ -58,8 +58,8 @@
     <div class="main--content">
       <div class="header--wrapper">
         <div class="header--title">
-          <span>Primary</span>
-          <h2>Dashboard</h2>
+          <span>Welcome</span>
+          <h2 class="user-profile"></h2>
         </div>
         <div class="user--info">
           <div class="search--box">
@@ -89,9 +89,9 @@
       </div>
     </div>
 
-    <!-- <h1>Welcome User</h1>
+    <!-- <h1>Welcome User</h1> -->
 
-    <h2 id="name">Your name is:</h2> -->
+    <!-- <h2 id="name">Your name is:</h2> -->
 
     <!-- <button id="SignoutBtn">Signout</button> -->
     <!-- 
@@ -121,6 +121,10 @@
           GreetHead.innerText = `welcome "${UserInfo.name}"!`;
         }
       };
+
+      if (UserInfo && UserInfo.name) {
+            document.querySelector(".user-profile").textContent = UserInfo.name;
+        }
 
       window.addEventListener("load", CheckCred);
       SignoutBtn.addEventListener("click", Signout);
