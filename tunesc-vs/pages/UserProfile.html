@@ -3,72 +3,95 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
-  </head>
-  <body onload="onPageLoad()">
-    <div class="main-container">
-      <div></div>
-    </div>
-    <h1>imm gonna kill myself</h1>
-    <div id="greet">Hi,</div>
-    <button onclick="authorizeSpot()">Login to Spotify</button>
-
-    <div>
-      <div>
-        
-        <p id="spot_name"></p>
-        
-        <p id="spot_email"></p>
-        
-        <p id="spot_followers"></p>
-        
-        <p id="spot_country"></p>
-        <img id="spot_picture" alt="Your Icon!" />
-      </div>
-    </div>
-
-    <div id="user-profile"></div>
-
-    <br />
-    <br />
-    <button id="Signout">Signout</button>
-
-    <!-- spotify -->
+    <!-- confirm css -->
+    <link rel="stylesheet" href="/tunesc-vs/styles/confirm.css" />
+    <link rel="stylesheet" href="/tunesc-vs/styles/dashboard.css" />
+    <title>User</title>
     <script src="/tunesc-vs/components/spot.js"></script>
+    <script src="/tunesc-vs/auth/signout.js"></script>
     <script src="/tunesc-vs/components/spotProfile.js"></script>
-    <!-- firebasesignin -->
-    <script type="module" src="/tunesc-vs/auth/signin.js"></script>
+    <script src="/tunesc-vs/components/moodPlaylistGenerator.js"></script>
+  </head>
+  <body>
+    <!-- dito mag reredirect yung user after login -->
 
-    <script>
-      // json.parse reverses the effect of json.stringify so cconvert niya yung string back to object
-      let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
-      let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+    <!-- sidebar -->
 
-      let MsgHead = document.getElementById("msg");
-      let GreetHead = document.getElementById("greet");
-      let SignoutBtn = document.getElementById("SignoutBtn");
+    <div class="sidebar">
+      <div class="logo"></div>
+      <ul class="menu">
+        <li class="active">
+          <a href="UserProfile.html">
+            <i class="fa-solid fa-address-book"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="/tunesc-vs/pages/Dashboard.html">
+            <i class="fa-solid fa-chess-board"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-calendar-day"></i>
+            <span>Calendar</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-chart-area"></i>
+            <span>Statistics</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa-solid fa-toolbox"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+        <li class="logout" id="SignoutBtn">
+          <a href="#">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
 
-      let Signout = () => {
-        sessionStorage.removeItem("user-creds");
-        sessionStorage.removeItem("user-info");
-        window.location.href = "Login.html";
-      };
+    <div class="main--content">
+          <div class="header--wrapper">
+            <div class="header--title">
+              <span>Primary</span>
+              <h2>User Profile</h2>
+            </div>
+            <div class="user--info">
+              <div class="search--box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search" />
+              </div>
+              <!-- lagay galing firebase yung user image or sa spotify -->
+              <img id="spot_picture" alt="test" />
+            </div>
+          </div>
+            
+          <!-- Lagay ka Profile dito -->
 
-      let CheckCred = () => {
-        if (!sessionStorage.getItem("user-creds")) {
-          window.location.href = "Login.html";
-        } else {
-          MsgHead.innerText = `user with email "${UserCreds.email}" logged in`;
-          GreetHead.innerText = `welcome "${UserInfo.name}"!`;
-        }
-      };
+          <div id="UserProfileContainer"></div>
 
-      window.addEventListener("load", CheckCred);
-      SignoutBtn.addEventListener("click", Signout);
-    </script>
+    </div>
+
+    
 
     <!-- firebase -->
     <script type="module" src="/tunesc-vs/auth/signin.js"></script>
     <script type="module" src="/tunesc-vs/auth/signup.js"></script>
+    
+
+    <!-- fontawesome icons -->
+    <script
+      src="https://kit.fontawesome.com/64d29af423.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
